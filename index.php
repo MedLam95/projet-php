@@ -3,7 +3,7 @@
 
 
 <!-- Ici appelle à la fonction pour compteur de vues -->
-<h1>Salut à tous</h1>
+
 
 
 <!-- Ici footer -->
