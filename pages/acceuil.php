@@ -5,7 +5,6 @@
     $r = $pdo->query("SELECT * FROM images");
     // var_dump($donnees = $r->fetch(PDO::FETCH_ASSOC));
     $content = '';
-    $contentcom = '';
     // var_dump($donnees);
     while ($donnees = $r->fetch(PDO::FETCH_ASSOC)) {
         foreach ($donnees as $indice => $value) {
