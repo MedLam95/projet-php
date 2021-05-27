@@ -10,10 +10,11 @@ $content = '';
 while ($donnees = $r->fetch(PDO::FETCH_ASSOC)) {
     foreach ($donnees as $indice => $value) {
         if ($indice == 'photo') {
-            $content .= "<img class=\"card-img-top\" src= \"../photo/$value\" alt=\"Carte d'image\" \"<br>";
+            $content .= "<div class=\"card\" style=\"width: 18rem;\"><img class=\"card-img-top\" src= \"../photo/$value\" alt=\"Carte d'image\" \"<br>";
         }
         if ($indice == 'commentaires') {
-            $content .= "<p class=\"card-text\"> $value </p>";
+            $content .= "<div class=\"card-body\"><p class=\"card-text\"> $value </p></div>
+            </div>";
         }
     }
 }
@@ -21,10 +22,21 @@ while ($donnees = $r->fetch(PDO::FETCH_ASSOC)) {
 <!-- Ajout de cartes affichant les photos et les commentaires -->
 <div class="container">
     <div class="row">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <?= $content ?>
-            </div>
-        </div>
+        <?= $content ?>
     </div>
-</div> <?php require_once('../inc/footer.php'); ?>
+
+
+</div>
+<!-- On créé un compteur de vues sur notre site -->
+<?php $handle = fopen("../counter/counter.txt", "r");
+if (!$handle) {
+    echo "fichier introuvable";
+} else {
+    $counter = (int) fread($handle, 20);
+    fclose($handle);
+    $counter++;
+    echo " <strong class=\"visite\"> Vous êtes le visiteur numéro " . $counter . " </strong> ";
+    $handle = fopen("../counter/counter.txt", "w");
+    fwrite($handle, $counter);
+    fclose($handle);
+} ?><?php require_once('../inc/footer.php'); ?>
