@@ -30,6 +30,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-secondary" href="../pages/galerie.php">Galerie</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="../pages/article.php">Article</a>
+                    </li>
 
                 </ul>
             </div>
