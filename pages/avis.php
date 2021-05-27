@@ -1,5 +1,5 @@
 <?php require_once('../inc/header.php'); ?>
-
+<!-- On créé un compteur de vues sur notre site -->
 <?php $handle = fopen("../counter/counter.txt", "r");
 if (!$handle) {
     echo "fichier introuvable";

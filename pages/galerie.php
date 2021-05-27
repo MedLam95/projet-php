@@ -12,10 +12,12 @@ if (isset($_POST['but_upload'])) {
         $photo_dossier = RACINE_SITE . "photo/$nom_photo";
         copy($_FILES['photo']['tmp_name'], $photo_dossier);
     }
+    // On envoie photo et commentaires vers la bdd
     $pdo->query("INSERT INTO images (photo, commentaires) VALUES ('$nom_photo', '$_POST[commentaire]')");
 }
 
 ?>
+<!-- Formulaire permettant d'envoyer une photo et un commentaire -->
 <div class="container">
     <div class="row">
         <form class="form-group d-flex align-items-start w-90 p-3 mx-5" method="post" action="" enctype='multipart/form-data'>

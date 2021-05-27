@@ -1,24 +1,30 @@
 <?php require_once('../inc/config.php') ?>
-<?php require_once('../inc/header.php'); ?> <div class='container'>
-    <?php
-
-    $r = $pdo->query("SELECT * FROM images");
-    // var_dump($donnees = $r->fetch(PDO::FETCH_ASSOC));
-    $content = '';
-    // var_dump($donnees);
-    while ($donnees = $r->fetch(PDO::FETCH_ASSOC)) {
-        foreach ($donnees as $indice => $value) {
-            if ($indice == 'photo') {
-                $content .= "<img class=\"d-block w-100\" src= \"../photo/$value\" alt=\"First slide\" \"<br>";
-            }
-            if ($indice == 'commentaires') {
-                $content .= "<p> $value </p>";
-            }
+<?php require_once('../inc/header.php'); ?>
+<?php
+// On récupère l'image
+$r = $pdo->query("SELECT * FROM images");
+// var_dump($donnees = $r->fetch(PDO::FETCH_ASSOC));
+$content = '';
+// var_dump($donnees);
+// On affiche l'image
+while ($donnees = $r->fetch(PDO::FETCH_ASSOC)) {
+    foreach ($donnees as $indice => $value) {
+        if ($indice == 'photo') {
+            $content .= "<img class=\"card-img-top\" src= \"../photo/$value\" alt=\"Carte d'image\" \"<br>";
+        }
+        if ($indice == 'commentaires') {
+            $content .= "<p class=\"card-text\"> $value </p>";
         }
     }
-    ?>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4 mx-5 my-5"> <?= $content ?> </div>
+}
+?>
+<!-- Ajout de cartes affichant les photos et les commentaires -->
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <?= $content ?>
+            </div>
         </div>
-    </div> <?php require_once('../inc/footer.php'); ?>
+    </div>
+</div> <?php require_once('../inc/footer.php'); ?>
